@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+  <title>{% block title %}My Tennis Club - List of all members{% endblock %}</title>
+  {% block content %}
+  <h1>Members</h1>
+  
+<body>
+</head>
+
+
+  <ul>
+    {% for x in mymembers %}
+      <li><a href="details/{{ x.id }}">{{ x.firstname }} {{ x.lastname }}</a></li>
+    {% endfor %}
+  </ul>
+
+</head>
+<body>
+
+
+{% endblock %}
+
+</body>
+</html>

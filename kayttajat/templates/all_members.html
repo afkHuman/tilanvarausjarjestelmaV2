@@ -1,12 +1,15 @@
 {% extends "master.html" %}
 
   {% block title %}
-    Kayttajat - List of all members
+    Tilanvarausjärjestelmä - List of all kayttajat
   {% endblock %}
   
   
   {% block content %}
-    <h1>Members</h1>
+
+    <p><a href="/">Etusivu</a></p>
+
+    <h1>Kayttajat</h1>
     
     <ul>
       {% for x in mymembers %}

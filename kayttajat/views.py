@@ -22,9 +22,17 @@ def main(request):
   template = loader.get_template('main.html')
   return HttpResponse(template.render())
 
+#def testing(request):
+#  mymembers = Kayttaja.objects.all().values()
+#  template = loader.get_template('template.html')
+#  context = {
+#     'mymembers': mymembers,
+#  }
+#  return HttpResponse(template.render(context, request))
+
 def testing(request):
   template = loader.get_template('template.html')
-  context = {
-    'fruits': ['Apple', 'Banana', 'Cherry'],   
-  }
-  return HttpResponse(template.render(context, request))
+  #context = {
+  #  'var1': 'John',
+  #}
+  return HttpResponse(template.render())   

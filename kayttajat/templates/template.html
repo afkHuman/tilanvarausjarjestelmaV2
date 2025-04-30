@@ -2,6 +2,28 @@
 <html>
 <body>
 
+{% with firstname="Tobias" %}
+  <h1>Hello {{ firstname }}, how are you?</h1>
+{% endwith %}
+
+<h1>Hello {{ firstname }}, how are you?</h1>
+
+<ul>
+  {% for x in ctx %}
+    <li>{{ x.firstname }} {{ x.lastname }} {{x.joined_date}}</li>
+  {% endfor %}
+</ul>
+
+<h1>Welcome Everyone</h1>
+
+{% for x in members %}
+  <h1>{{ x.id }}</h1>
+  <p>
+    {{ x.firstname }}
+    {{ x.lastname }}
+  </p>
+{% endfor %}
+
 {% for x in fruits %}
   <h1>{{ x }}</h1>
 {% endfor %}

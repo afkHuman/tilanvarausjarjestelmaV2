@@ -2,6 +2,10 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Kayttaja
 
+# Käytetty esimerkissä
+# from django.db.models import Q
+# https://www.w3schools.com/django/django_queryset_filter.php/ Filtterointi tapoja/suodatustapoja koodiin!
+
 def kayttajat(request):
   mymembers = Kayttaja.objects.all().values()
   template = loader.get_template('all_members.html')
@@ -22,17 +26,9 @@ def main(request):
   template = loader.get_template('main.html')
   return HttpResponse(template.render())
 
-#def testing(request):
-#  mymembers = Kayttaja.objects.all().values()
-#  template = loader.get_template('template.html')
-#  context = {
-#     'mymembers': mymembers,
-#  }
-#  return HttpResponse(template.render(context, request))
-
 def testing(request):
   template = loader.get_template('template.html')
-  #context = {
-  #  'var1': 'John',
-  #}
-  return HttpResponse(template.render())   
+  context = {
+    'fruits': ['Apple', 'Banana', 'Cherry'],   
+  }
+  return HttpResponse(template.render(context, request))

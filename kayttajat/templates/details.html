@@ -1,31 +1,13 @@
-<!DOCTYPE html>
 {% extends "master.html" %}
-<html>
-
-<body>
-
-<h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
-  
-<p>Phone: {{ mymember.phone }}</p>
-<p>Member since: {{ mymember.joined_date }}</p>
-
-<p>Back to <a href="/kayttajat">Kayttajat</a></p>
-
-</body>
-</html>
-
 
 {% block title %}
   Details about {{ mymember.firstname }} {{ mymember.lastname }}
 {% endblock %}
 
-
 {% block content %}
-  <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
-  
-  <p>Phone {{ mymember.phone }}</p>
-  <p>Member since: {{ mymember.joined_date }}</p>
-  
-  <p>Back to <a href="/kayttajat/">käyttäjät</a></p>
-  
-{% endblock %}
+  <div class="mycard">
+    <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+    <p>Puhelin {{ mymember.phone }}</p>
+    <p>Liittynyt jäseneksi: {{ mymember.joined_date }}</p>
+  </div>
+{% endblock %}  

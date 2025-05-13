@@ -1,9 +1,5 @@
 from django.contrib import admin
-from .models import Kayttaja
+from .models import UusiKayttaja
 
 # Register your models here.
-
-class KayttajaAdmin(admin.ModelAdmin):
-  list_display = ("firstname", "lastname", "joined_date",)
-  
-admin.site.register(Kayttaja, KayttajaAdmin)
+admin.site.register(UusiKayttaja)

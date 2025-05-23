@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import UusiKayttaja
 
-
 # Register your models here.
 
 class MemberAdmin(admin.ModelAdmin):
@@ -9,3 +8,5 @@ class MemberAdmin(admin.ModelAdmin):
   prepopulated_fields = {"slug": ("firstname", "lastname")}
 
 admin.site.register(UusiKayttaja, MemberAdmin)
+
+

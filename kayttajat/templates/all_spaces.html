@@ -1,0 +1,16 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Tilat - Lista kaikista Tiloista
+{% endblock %}
+
+{% block content %}
+  <div class="mycard">
+    <h1>Tilat</h1>
+    <ul>
+      {% for x in myspaces %}
+        <li onclick="window.location = 'details/{{ x.slug }}'">{{ x.purpose }} - {{ x.location }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

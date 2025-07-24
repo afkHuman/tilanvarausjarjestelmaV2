@@ -15,6 +15,15 @@ def kayttajat(request):
   
   return HttpResponse(template.render(context, request))
 
+def tilat(request):
+  myspaces = UusiTila.objects.all().values()
+  template = loader.get_template('all_spaces.html')
+  context = {
+    'myspaces': myspaces,
+  }
+  
+  return HttpResponse(template.render(context, request))
+
 def details(request, slug):
   mymember = UusiKayttaja.objects.get(slug=slug)
   template = loader.get_template('details.html')
@@ -26,10 +35,3 @@ def details(request, slug):
 def main(request):
   template = loader.get_template('main.html')
   return HttpResponse(template.render())
-
-def testing(request):
-  template = loader.get_template('template.html')
-  context = {
-    'fruits': ['Apple', 'Banana', 'Cherry'],   
-  }
-  return HttpResponse(template.render(context, request))

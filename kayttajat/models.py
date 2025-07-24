@@ -30,7 +30,7 @@ class UusiTila(models.Model):
   """Model representing new space in the application.
 
   Args:
-      IDnumber (int): Unique identifier for the space
+      idNumber (int): Unique identifier for the space
       location (str): Location of the space
       purpose (str): Purpose of the space
       size (float): Size of the space in square meters
@@ -43,10 +43,10 @@ class UusiTila(models.Model):
   Returns:
       str: String representation of the space
   """
-  IDnumber = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+  idNumber = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
   location = models.CharField(max_length=255, null=False)
   purpose = models.CharField(max_length=255, null=False)
-  size = models.FloatField(null=False, blank=True)
+  size = models.DecimalField(max_digits=10, decimal_places=2,verbose_name="Size m²", default=0.0, blank=True)
   capacity = models.IntegerField(default=0, blank=True)
   rental = models.BooleanField(default=False)
   loan = models.BooleanField(default=False)
@@ -54,4 +54,4 @@ class UusiTila(models.Model):
   slug = models.SlugField(default="", null=False)
 
   def __str__(self):
-    return f"IDnumber: {self.IDnumber}, Location: {self.location}, Purpose: {self.purpose}, Size: {self.size} m², Capacity: {self.capacity}, Rental: {self.rental}, Loan: {self.loan}, Reservation: {self.reservation}"
+    return f"ID: {self.idNumber} | Location: {self.location} | Purpose: {self.purpose} | Size: {self.size} m² | Capacity: {self.capacity} | Rental: {self.rental} | Loan: {self.loan} | Reservation: {self.reservation}"

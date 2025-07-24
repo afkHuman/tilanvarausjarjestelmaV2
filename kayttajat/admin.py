@@ -10,7 +10,7 @@ class MemberAdmin(admin.ModelAdmin):
 admin.site.register(UusiKayttaja, MemberAdmin)
 
 class SpaceAdmin(admin.ModelAdmin):
-  list_display = ("size", "capacity", "purpose", "location", "rental", "loan", "reservation",)
-  prepopulated_fields = {"slug": ("size", "location")}
+  list_display = ("idNumber", "location", "purpose", "size", "capacity", "rental", "loan", "reservation",)
+  prepopulated_fields = {"slug": ("purpose", "location")}
 
 admin.site.register(UusiTila, SpaceAdmin)

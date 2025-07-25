@@ -31,6 +31,8 @@ class UusiTila(models.Model):
 
   Args:
       idNumber (int): Unique identifier for the space
+      privatespace (bool): Indicates if the space is private
+      publicspace (bool): Indicates if the space is public
       location (str): Location of the space
       purpose (str): Purpose of the space
       size (float): Size of the space in square meters
@@ -45,6 +47,8 @@ class UusiTila(models.Model):
   """
   idNumber = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
   location = models.CharField(max_length=255, null=False)
+  privatespace = models.BooleanField(default=False)
+  publicspace = models.BooleanField(default=False)
   purpose = models.CharField(max_length=255, null=False)
   size = models.DecimalField(max_digits=10, decimal_places=2,verbose_name="Size m²", default=0.0, blank=True)
   capacity = models.IntegerField(default=0, blank=True)
@@ -54,4 +58,8 @@ class UusiTila(models.Model):
   slug = models.SlugField(default="", null=False)
 
   def __str__(self):
-    return f"ID: {self.idNumber} | Location: {self.location} | Purpose: {self.purpose} | Size: {self.size} m² | Capacity: {self.capacity} | Rental: {self.rental} | Loan: {self.loan} | Reservation: {self.reservation}"
+    # Jos haluat nähdä kaikki kentät merkkijonona, voit käyttää alla olevaa riviä:
+    #return f"ID: {self.idNumber} | Location: {self.location} | Private: {self.privatespace} | Public: {self.publicspace} | Purpose: {self.purpose} | Size: {self.size} m² | Capacity: {self.capacity} | Rental: {self.rental} | Loan: {self.loan} | Reservation: {self.reservation}"
+    
+    # Tai jos haluat vain ID:n, voit käyttää alla olevaa riviä:
+    return f"ID: {self.idNumber}"

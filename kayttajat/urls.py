@@ -6,7 +6,8 @@ urlpatterns = [
     path('', views.main, name='main'),
     # Käyttäjät URLs
     path('kayttajat/', views.kayttajat, name='kayttajat'),
-    path('kayttajat/details/<slug:slug>', views.details, name='details'),
+    path('kayttajat/users_details/<slug:slug>', views.users_details, name='users_details'),
     # Tilat URLs
     path('tilat/', views.tilat, name='tilat'),
+    path('tilat/spaces_details/<slug:slug>', views.spaces_details, name='spaces_details'),
 ]

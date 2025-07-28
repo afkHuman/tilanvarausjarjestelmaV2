@@ -9,7 +9,7 @@
     <h1>Tilat</h1>
     <ul>
       {% for x in myspaces %}
-        <li onclick="window.location = 'details/{{ x.slug }}'">{{ x.purpose }} - {{ x.location }}</li>
+        <li onclick="window.location = 'spaces_details/{{ x.slug }}'">{{ x.purpose }} - {{ x.location }}</li>
       {% endfor %}
     </ul>
   </div>

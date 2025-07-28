@@ -1,0 +1,29 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Details about {{ myspaces.purpose }} {{ myspaces.location }}
+{% endblock %}
+
+{% block content %}
+  <div class="mycard">
+    <h1>{{ myspaces.purpose }} {{ myspaces.location }}</h1>
+    <p>ID: {{ myspaces.idNumber }}</p>
+    <p>Tilan sijainti: {{ myspaces.location }}</p>
+    <p>Tilan käyttötarkoitus: {{ myspaces.purpose }}</p>
+    <p>Tilan koko: {{ myspaces.size }}</p>
+    <p>Tilan kapasiteetti: {{ myspaces.capacity }}</p>
+    {% if myspaces.type == "private" %}
+      <p>Tila on yksityinen.</p>
+    {% elif myspaces.type == "public" %}
+      <p>Tila on julkinen.</p>
+    {% elif myspaces.type == "rental" %}
+      <p>Tila on vuokrattavissa.</p>
+    {% elif myspaces.type == "loan" %}
+      <p>Tila on lainattavissa.</p>
+    {% elif myspaces.type == "reservation" %}
+      <p>Tila on varattavissa.</p>
+    {% else %}
+      <p>Tilan tyyppi ei määritelty.</p>
+    {% endif %}
+  </div>
+{% endblock %}

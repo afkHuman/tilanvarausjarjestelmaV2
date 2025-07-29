@@ -5,8 +5,8 @@ from .models import UusiKayttaja, UusiTila
 
 # Järjestelmänvalvojan rakenne MemberAdmin luokalle, joka hyödyntää UusiKayttaja-mallia
 class MemberAdmin(admin.ModelAdmin):
-  # TODO: Kysy Markulta
-  """Admin interface for managing user instances.
+  """
+  Admin interface for managing user instances.
 
   Args:
       admin (ModelAdmin): The base admin class.
@@ -19,13 +19,12 @@ admin.site.register(UusiKayttaja, MemberAdmin)
 
 # Järjestelmänvalvojan rakenne SpaceAdmin luokalle, joka hyödyntää UusiTila-mallia
 class SpaceAdmin(admin.ModelAdmin):
-  # TODO: Kysy Markulta
   """Admin interface for managing space instances.
 
   Args:
       admin (ModelAdmin): The base admin class.
   """
-  list_display = ("idNumber", "location", "publicity", "availability", "type", "size", "capacity", "rental", "loan", "reservation",)
+  list_display = ("idNumber", "location", "publicity", "availability", "type", "size", "capacity", "reservation",)
   prepopulated_fields = {"slug": ("type", "location")}
 
 admin.site.register(UusiTila, SpaceAdmin)

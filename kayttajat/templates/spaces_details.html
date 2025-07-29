@@ -10,51 +10,32 @@
     <p>ID: {{ myspaces.idNumber }}</p>
     <p>Tilan sijainti: {{ myspaces.location }}</p>
     <p>Tilan käyttötarkoitus: {{ myspaces.type }}</p>
-    <p>Tilan koko: {{ myspaces.size }}m²</p>
-    <p>Tilan kapasiteetti: {{ myspaces.capacity }}</p>
-    
-    <!-- Julkisuus -->
-<p>
-  Tilan julkisuus: 
-  {% if myspaces.publicity == "private" %}
-    Yksityinen
-  {% elif myspaces.publicity == "public" %}
-    Julkinen
-  {% else %}
-    Ei määritelty
-  {% endif %}
-</p>
 
-<!-- Varattavuus -->
-<p>
-  Tilan varattavuus: 
-  {% if myspaces.availability == "rental" %}
-    Vuokrattavissa
-  {% elif myspaces.availability == "loan" %}
-    Lainattavissa
-  {% elif myspaces.availability == "reservation" %}
-    Varattavissa
-  {% else %}
-    Ei määritelty
-  {% endif %}
-</p>
-
-<!-- Tilan tyyppi -->
-<!-- <p>
-  Tilan tyyppi: 
-  {% if myspaces.type == "private" %}
-    Yksityinen
-      {% elif myspaces.type == "public" %}
-        Julkinen
-      {% elif myspaces.type == "rental" %}
-        Vuokrattava
-      {% elif myspaces.type == "loan" %}
-        Lainattava
-      {% elif myspaces.type == "reservation" %}
-        Varattava
+    <!-- Varattavuus -->
+    <p>
+      Vuokra/Laina: 
+      {% if myspaces.availability == "rental" %}
+        Vuokra
+      {% elif myspaces.availability == "loan" %}
+        Laina
       {% else %}
         Ei määritelty
       {% endif %}
-    </p> -->
+    </p>
+
+    <!-- Julkisuus -->
+    <p>
+      Tilan julkisuus: 
+      {% if myspaces.publicity == "private" %}
+        Yksityinen
+      {% elif myspaces.publicity == "public" %}
+        Julkinen
+      {% else %}
+        Ei määritelty
+      {% endif %}
+    </p>
+
+    <p>Tilan koko: {{ myspaces.size }}m²</p>
+    <p>Tilan kapasiteetti: {{ myspaces.capacity }}</p>
   </div>
 {% endblock %}

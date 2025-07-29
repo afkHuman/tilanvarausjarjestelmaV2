@@ -31,14 +31,12 @@ class UusiTila(models.Model):
 
   Args:
       idNumber (int): Unique identifier for the space
-      privatespace (bool): Indicates if the space is private
-      publicspace (bool): Indicates if the space is public
       location (str): Location of the space
+      publicity (str): Publicity status of the space (private or public)
+      availability (str): Availability status of the space (rental or loan)
       type (str): Type of the space
       size (str): Size of the space in square meters
       capacity (str): Capacity of the space
-      rental (bool): Indicates if the space is available for rental
-      loan (bool): Indicates if the space can be loaned
       reservation (bool): Indicates if the space can be reserved
       slug (str): Slug field for URL identification
 
@@ -47,13 +45,11 @@ class UusiTila(models.Model):
   """
   idNumber = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
   location = models.CharField(max_length=255, null=False)
-  publicity = models.CharField(max_length=20, choices=[('private', 'Yksityinen'), ('public', 'Julkinen')], default="")
-  availability = models.CharField(max_length=20, choices=[('rental', 'Vuokrattavissa'), ('loan', 'Lainattavissa'), ('reservation', 'Varattavissa')], default="")
+  publicity = models.CharField(max_length=20, choices=[('private', 'Yksityinen'),('public', 'Julkinen')],default="")
+  availability = models.CharField(max_length=20, choices=[('rental', 'Vuokra'),('loan', 'Laina')], default="")
   type = models.CharField(max_length=255, null=False)
   size = models.CharField(max_length=10, verbose_name="Size m²", default="0", blank=True)
   capacity = models.CharField(max_length=10, verbose_name="Capacity", default="0", blank=True)
-  rental = models.BooleanField(default=False)
-  loan = models.BooleanField(default=False)
   reservation = models.BooleanField(default=False)
   slug = models.SlugField(default="", null=False)
 

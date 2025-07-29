@@ -34,9 +34,9 @@ class UusiTila(models.Model):
       privatespace (bool): Indicates if the space is private
       publicspace (bool): Indicates if the space is public
       location (str): Location of the space
-      purpose (str): Purpose of the space
-      size (float): Size of the space in square meters
-      capacity (int): Capacity of the space
+      type (str): Type of the space
+      size (str): Size of the space in square meters
+      capacity (str): Capacity of the space
       rental (bool): Indicates if the space is available for rental
       loan (bool): Indicates if the space can be loaned
       reservation (bool): Indicates if the space can be reserved
@@ -47,11 +47,11 @@ class UusiTila(models.Model):
   """
   idNumber = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
   location = models.CharField(max_length=255, null=False)
-  privatespace = models.BooleanField(default=False)
-  publicspace = models.BooleanField(default=False)
-  purpose = models.CharField(max_length=255, null=False)
-  size = models.DecimalField(max_digits=10, decimal_places=2,verbose_name="Size m²", default=0.0, blank=True)
-  capacity = models.IntegerField(default=0, blank=True)
+  publicity = models.CharField(max_length=20, choices=[('private', 'Yksityinen'), ('public', 'Julkinen')], default="")
+  availability = models.CharField(max_length=20, choices=[('rental', 'Vuokrattavissa'), ('loan', 'Lainattavissa'), ('reservation', 'Varattavissa')], default="")
+  type = models.CharField(max_length=255, null=False)
+  size = models.CharField(max_length=10, verbose_name="Size m²", default="0", blank=True)
+  capacity = models.CharField(max_length=10, verbose_name="Capacity", default="0", blank=True)
   rental = models.BooleanField(default=False)
   loan = models.BooleanField(default=False)
   reservation = models.BooleanField(default=False)
@@ -59,7 +59,7 @@ class UusiTila(models.Model):
 
   def __str__(self):
     # Jos haluat nähdä kaikki kentät merkkijonona, voit käyttää alla olevaa riviä:
-    #return f"ID: {self.idNumber} | Location: {self.location} | Private: {self.privatespace} | Public: {self.publicspace} | Purpose: {self.purpose} | Size: {self.size} m² | Capacity: {self.capacity} | Rental: {self.rental} | Loan: {self.loan} | Reservation: {self.reservation}"
-    
+    #return f"ID: {self.idNumber} | Location: {self.location} | Private: {self.privatespace} | Public: {self.publicspace} | Type: {self.type} | Size: {self.size} m² | Capacity: {self.capacity} | Rental: {self.rental} | Loan: {self.loan} | Reservation: {self.reservation}"
+
     # Tai jos haluat vain ID:n, voit käyttää alla olevaa riviä:
     return f"ID: {self.idNumber}"

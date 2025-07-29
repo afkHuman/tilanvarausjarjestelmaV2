@@ -25,7 +25,7 @@ class SpaceAdmin(admin.ModelAdmin):
   Args:
       admin (ModelAdmin): The base admin class.
   """
-  list_display = ("idNumber", "location", "privatespace", "publicspace", "purpose", "size", "capacity", "rental", "loan", "reservation",)
-  prepopulated_fields = {"slug": ("purpose", "location")}
+  list_display = ("idNumber", "location", "publicity", "availability", "type", "size", "capacity", "rental", "loan", "reservation",)
+  prepopulated_fields = {"slug": ("type", "location")}
 
 admin.site.register(UusiTila, SpaceAdmin)

@@ -1,29 +1,60 @@
 {% extends "master.html" %}
 
 {% block title %}
-  Details about {{ myspaces.purpose }} {{ myspaces.location }}
+  Details about {{ myspaces.type }} {{ myspaces.location }}
 {% endblock %}
 
 {% block content %}
   <div class="mycard">
-    <h1>{{ myspaces.purpose }} {{ myspaces.location }}</h1>
+    <h1>{{ myspaces.type }} {{ myspaces.location }}</h1>
     <p>ID: {{ myspaces.idNumber }}</p>
     <p>Tilan sijainti: {{ myspaces.location }}</p>
-    <p>Tilan käyttötarkoitus: {{ myspaces.purpose }}</p>
-    <p>Tilan koko: {{ myspaces.size }}</p>
+    <p>Tilan käyttötarkoitus: {{ myspaces.type }}</p>
+    <p>Tilan koko: {{ myspaces.size }}m²</p>
     <p>Tilan kapasiteetti: {{ myspaces.capacity }}</p>
-    {% if myspaces.type == "private" %}
-      <p>Tila on yksityinen.</p>
-    {% elif myspaces.type == "public" %}
-      <p>Tila on julkinen.</p>
-    {% elif myspaces.type == "rental" %}
-      <p>Tila on vuokrattavissa.</p>
-    {% elif myspaces.type == "loan" %}
-      <p>Tila on lainattavissa.</p>
-    {% elif myspaces.type == "reservation" %}
-      <p>Tila on varattavissa.</p>
-    {% else %}
-      <p>Tilan tyyppi ei määritelty.</p>
-    {% endif %}
+    
+    <!-- Julkisuus -->
+<p>
+  Tilan julkisuus: 
+  {% if myspaces.publicity == "private" %}
+    Yksityinen
+  {% elif myspaces.publicity == "public" %}
+    Julkinen
+  {% else %}
+    Ei määritelty
+  {% endif %}
+</p>
+
+<!-- Varattavuus -->
+<p>
+  Tilan varattavuus: 
+  {% if myspaces.availability == "rental" %}
+    Vuokrattavissa
+  {% elif myspaces.availability == "loan" %}
+    Lainattavissa
+  {% elif myspaces.availability == "reservation" %}
+    Varattavissa
+  {% else %}
+    Ei määritelty
+  {% endif %}
+</p>
+
+<!-- Tilan tyyppi -->
+<!-- <p>
+  Tilan tyyppi: 
+  {% if myspaces.type == "private" %}
+    Yksityinen
+      {% elif myspaces.type == "public" %}
+        Julkinen
+      {% elif myspaces.type == "rental" %}
+        Vuokrattava
+      {% elif myspaces.type == "loan" %}
+        Lainattava
+      {% elif myspaces.type == "reservation" %}
+        Varattava
+      {% else %}
+        Ei määritelty
+      {% endif %}
+    </p> -->
   </div>
 {% endblock %}

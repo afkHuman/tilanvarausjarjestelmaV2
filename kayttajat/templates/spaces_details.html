@@ -6,22 +6,53 @@
 
 {% block content %}
   <div class="mycard">
-    <h1>{{ myspaces.type }} {{ myspaces.location }}</h1>
+    
+    <!-- Tilan tyyppi ja sijainti -->
+    <h1>
+      {% if myspaces.type == "office" %}
+        Toimisto
+      {% elif myspaces.type == "meeting_room" %}
+        Kokoushuone
+      {% elif myspaces.type == "conference_room" %}
+        Konferenssihuone
+      {% elif myspaces.type == "event_space" %}
+        Tapahtumatila
+      {% else %}
+        Ei määritelty
+      {% endif %}
+      {{ myspaces.location }}
+    </h1>
+
     <p>ID: {{ myspaces.idNumber }}</p>
     <p>Tilan sijainti: {{ myspaces.location }}</p>
-    <p>Tilan käyttötarkoitus: {{ myspaces.type }}</p>
+   
+    <!-- Tilan tyyppi -->
+    <p>Tilan tyyppi: 
+      {% if myspaces.type == "office" %}
+        Toimisto
+      {% elif myspaces.type == "meeting_room" %}
+        Kokoushuone
+      {% elif myspaces.type == "conference_room" %}
+        Konferenssihuone
+      {% elif myspaces.type == "event_space" %}
+        Tapahtumatila
+      {% else %}
+        Ei määritelty
+      {% endif %}
+    </p>
 
-    <!-- Varattavuus -->
+    <!-- Palvelutyyppi -->
     <p>
-      Vuokra/Laina: 
-      {% if myspaces.availability == "rental" %}
+      Palvelutyyppi: 
+      {% if myspaces.service_type == "rental" %}
         Vuokra
-      {% elif myspaces.availability == "loan" %}
+      {% elif myspaces.service_type == "loan" %}
         Laina
       {% else %}
         Ei määritelty
       {% endif %}
     </p>
+
 
     <!-- Julkisuus -->
     <p>
@@ -36,6 +67,6 @@
     </p>
 
     <p>Tilan koko: {{ myspaces.size }}m²</p>
-    <p>Tilan kapasiteetti: {{ myspaces.capacity }}</p>
+    <p>Tilan kapasiteetti: {{ myspaces.capacity }} henkilöä</p>
   </div>
 {% endblock %}

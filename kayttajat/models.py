@@ -33,7 +33,7 @@ class UusiTila(models.Model):
       idNumber (int): Unique identifier for the space
       location (str): Location of the space
       publicity (str): Publicity status of the space (private or public)
-      availability (str): Availability status of the space (rental or loan)
+      service_type (str): Service type of the space (rental or loan)
       type (str): Type of the space
       size (str): Size of the space in square meters
       capacity (str): Capacity of the space
@@ -45,17 +45,43 @@ class UusiTila(models.Model):
   """
   idNumber = models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
   location = models.CharField(max_length=255, null=False)
-  publicity = models.CharField(max_length=20, choices=[('private', 'Yksityinen'),('public', 'Julkinen')],default="")
-  availability = models.CharField(max_length=20, choices=[('rental', 'Vuokra'),('loan', 'Laina')], default="")
-  type = models.CharField(max_length=255, null=False)
+  publicity = models.CharField(
+      max_length=20,
+      choices=[
+          ('', 'Valitse tilan julkisuus'),
+          ('private', 'Yksityinen'),
+          ('public', 'Julkinen')
+      ],
+      default=''
+  )
+
+  service_type = models.CharField(
+      max_length=20,
+      choices=[
+          ('', 'Valitse tilan palvelutyyppi'),
+          ('rental', 'Vuokra'),
+          ('loan', 'Laina')
+      ],
+      default=''
+  )
+
+  type = models.CharField(
+    max_length=20,
+    choices=[
+        ('', 'Valitse tilan tyyppi'),
+        ('office', 'Toimisto'),
+        ('meeting_room', 'Kokoushuone'),
+        ('conference_room', 'Konferenssihuone'),
+        ('event_space', 'Tapahtumatila')
+    ],
+    default=''
+  )
+  
   size = models.CharField(max_length=10, verbose_name="Size m²", default="0", blank=True)
   capacity = models.CharField(max_length=10, verbose_name="Capacity", default="0", blank=True)
   reservation = models.BooleanField(default=False)
   slug = models.SlugField(default="", null=False)
 
   def __str__(self):
-    # Jos haluat nähdä kaikki kentät merkkijonona, voit käyttää alla olevaa riviä:
-    #return f"ID: {self.idNumber} | Location: {self.location} | Private: {self.privatespace} | Public: {self.publicspace} | Type: {self.type} | Size: {self.size} m² | Capacity: {self.capacity} | Rental: {self.rental} | Loan: {self.loan} | Reservation: {self.reservation}"
+      return f"ID: {self.idNumber}"
 
-    # Tai jos haluat vain ID:n, voit käyttää alla olevaa riviä:
-    return f"ID: {self.idNumber}"

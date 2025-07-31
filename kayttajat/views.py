@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from .models import UusiKayttaja,UusiTila
+from .models import User,Space
 from django.shortcuts import get_object_or_404
 
 # Käytetty esimerkissä
@@ -14,7 +14,7 @@ def main(request):
 
 # Käyttäjät näkymä applikaatiolle
 def kayttajat(request):
-  mymembers = UusiKayttaja.objects.all().values()
+  mymembers = User.objects.all().values()
   template = loader.get_template('all_members.html')
   context = {
     'mymembers': mymembers,
@@ -24,7 +24,7 @@ def kayttajat(request):
 
 # Käyttäjän yksityiskohtien näkymä applikaatiolle
 def users_details(request, slug):
-  mymember = UusiKayttaja.objects.get(slug=slug)
+  mymember = User.objects.get(slug=slug)
   template = loader.get_template('users_details.html')
   context = {
     'mymember': mymember,
@@ -33,7 +33,7 @@ def users_details(request, slug):
 
 # Tilat näkymä applikaatioille
 def tilat(request):
-  myspaces = UusiTila.objects.all().values()
+  myspaces = Space.objects.all().values()
   template = loader.get_template('all_spaces.html')
   context = {
     'myspaces': myspaces,
@@ -43,7 +43,7 @@ def tilat(request):
 
 # Tilojen yksityiskohtien näkymä applikaatioille
 def spaces_details(request, slug):
-    myspaces = get_object_or_404(UusiTila, slug=slug)
+    myspaces = get_object_or_404(Space, slug=slug)
     template = loader.get_template('spaces_details.html')
     context = {
         'myspaces': myspaces,

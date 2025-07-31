@@ -1,9 +1,11 @@
 from django.db import models
 
+
+
 # Create your models here.
 
 # Malli joka kuvaa Uuutta käyttäjää sovelluksessa.
-class UusiKayttaja(models.Model):
+class User(models.Model):
   """Model representing a user in the application.
 
   Args:
@@ -26,7 +28,7 @@ class UusiKayttaja(models.Model):
     return f"{self.firstname} {self.lastname}"
 
 # Malli joka kuvaa uutta tilaa sovelluksessa.
-class UusiTila(models.Model):
+class Space(models.Model):
   """Model representing new space in the application.
 
   Args:

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+         {% load bootstrap5 %}
+         {% bootstrap_css %}
+         {% bootstrap_javascript %}
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav bg-info">
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/">ETUSIVU</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/user">KÄYTTÄJÄT</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" href="/space">TILAT</a>
+  </ul>
+
+{% block content %}
+{% endblock %}
+</div>
+</body>
+</html>
+
+<!--HTML JA JAVASCRIPT TAGIT https://www.w3schools.com/django/django_ref_template_tags.php --> 
+<!--HTML JA JAVASCRIPT FILTTERIT https://www.w3schools.com/django/django_ref_filter.php -->
+<!--HTML JA JAVASCRIPT KENTÄT https://www.w3schools.com/django/django_ref_field_lookups.php -->

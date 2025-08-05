@@ -5,12 +5,13 @@
 {% endblock %}
 
 {% block content %}
-  <div class="mycard">
-    <h1>Tilat</h1>
-    <ul>
-      {% for x in myspaces %}
-        <li>
-          <a href="spaces_details/{{ x.slug }}">
+  <h1>Tilat</h1>
+  <div class="cards-container">
+    {% for x in myspaces %}
+      <div class="space-card">
+        <div class="space-image"></div>
+        <a href="spaces_details/{{ x.slug }}">
+          <strong>
             {% if x.type == "office" %}
               Toimisto
             {% elif x.type == "meeting_room" %}
@@ -22,10 +23,11 @@
             {% else %}
               Ei määritelty
             {% endif %}
-            - {{ x.location }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
+          </strong>
+          <br>
+          Sijainti: {{ x.location}}
+        </a>
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}

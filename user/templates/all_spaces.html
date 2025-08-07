@@ -5,28 +5,30 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Tilat</h1>
-  <div class="cards-container">
-    {% for x in myspaces %}
-      <div class="space-card">
-        <div class="space-image"></div>
-        <a href="spaces_details/{{ x.slug }}">
-          <strong>
-            {% if x.type == "office" %}
+  <div>
+    {% for tila in myspaces %}
+      <div class="mycard">
+        <div class="mycard-header">
+          <h1>
+            {% if tila.type == "office" %}
               Toimisto
-            {% elif x.type == "meeting_room" %}
+            {% elif tila.type == "meeting_room" %}
               Kokoushuone
-            {% elif x.type == "conference_room" %}
+            {% elif tila.type == "conference_room" %}
               Konferenssihuone
-            {% elif x.type == "event_space" %}
+            {% elif tila.type == "event_space" %}
               Tapahtumatila
             {% else %}
               Ei määritelty
             {% endif %}
-          </strong>
-          <br>
-          Sijainti: {{ x.location}}
-        </a>
+            – {{ tila.location }}
+          </h1>
+        </div>
+        <div class="mycard-body">
+          <p>Koko: {{ tila.size }} m²</p>
+          <p>Kapasiteetti: {{ tila.capacity }}</p>
+          <a href="{% url 'spaces_details' tila.slug %}" class="btn btn-outline-primary">Näytä tiedot</a>
+        </div>
       </div>
     {% endfor %}
   </div>

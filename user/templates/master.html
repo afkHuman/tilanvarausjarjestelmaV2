@@ -9,18 +9,11 @@
          <link rel="stylesheet" href="/static/mystatic.css">
 </head>
 <body>
-
-<div class="container">
-  <ul class="nav bg-info">
-    <li class="nav-item">
-      <a class="nav-link link-light" href="/">ETUSIVU</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link-light" href="/user">KÄYTTÄJÄT</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link-light" href="/space">TILAT</a>
-  </ul>
+   <nav class="topnav">
+    <a href="{% url 'main' %}" class="btn btn-primary">Etusivu</a>
+    <a href="{% url 'user' %}" class="btn btn-primary">Käyttäjät</a>
+    <a href="{% url 'space' %}" class="btn btn-primary">Tilat</a>
+  </nav>
 
 {% block content %}
 {% endblock %}

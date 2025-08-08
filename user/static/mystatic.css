@@ -46,6 +46,13 @@ body {
   line-height: 1.2;
 }
 
+.mycard-header h2 {
+  color: #fff;
+  font-size: 32px;
+  margin: 0;
+  line-height: 1.2;
+}
+
 .mycard-body {
   background: #f1f1f1;
   padding: 10px;
@@ -53,7 +60,7 @@ body {
 
 .mycard-body p, .mycard-body a {
   color: #585d74;
-  font-size: 14px;
+  font-size: 16px;
   margin: 8px 0;
 }
 
@@ -63,6 +70,11 @@ body {
   margin:20px 0 60px 0;
 }
 
+.mycard h2 {
+  text-align: center;
+  color:#ffffff;
+  margin:20px 0 60px 0;
+}
 
 .cards-container {
   display: flex;

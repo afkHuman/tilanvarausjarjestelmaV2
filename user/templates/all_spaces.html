@@ -1,0 +1,43 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Tilat - Lista kaikista Tiloista
+{% endblock %}
+
+{% block content %}
+  <div>
+    {% for tila in myspaces %}
+
+    <!-- Kortti alkaa tästä  -->
+      <div class="mycard">
+
+        <!-- Kortin header -->
+        <div class="mycard-header">
+          <h1>
+            {% if tila.type == "office" %}
+              Toimisto
+            {% elif tila.type == "meeting_room" %}
+              Kokoushuone
+            {% elif tila.type == "conference_room" %}
+              Konferenssihuone
+            {% elif tila.type == "event_space" %}
+              Tapahtumatila
+            {% else %}
+              Ei määritelty
+            {% endif %}
+            – {{ tila.location }}
+          </h1>
+        </div>
+
+        <!-- Kortin sisältö -->
+        <div class="mycard-body">
+          <p>Koko: {{ tila.size }} m²</p>
+          <p>Kapasiteetti: {{ tila.capacity }}</p>
+          <a href="{% url 'spaces_details' tila.slug %}" class="btn btn-outline-primary">Näytä tiedot</a>
+        </div>
+
+        <!-- Kortti loppuu tähän -->
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

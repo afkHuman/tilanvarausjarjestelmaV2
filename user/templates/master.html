@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+         {% load bootstrap5 %}
+         {% bootstrap_css %}
+         {% bootstrap_javascript %}
+          {% load static %}
+         <link rel="stylesheet" href="/static/mystatic.css">
+</head>
+<body>
+   <nav class="topnav">
+    <a href="{% url 'main' %}" class="btn btn-primary">Etusivu</a>
+    <a href="{% url 'user' %}" class="btn btn-primary">Käyttäjät</a>
+    <a href="{% url 'space' %}" class="btn btn-primary">Tilat</a>
+  </nav>
+
+{% block content %}
+{% endblock %}
+</div>
+</body>
+</html>
+
+<!--HTML JA JAVASCRIPT TAGIT https://www.w3schools.com/django/django_ref_template_tags.php --> 
+<!--HTML JA JAVASCRIPT FILTTERIT https://www.w3schools.com/django/django_ref_filter.php -->
+<!--HTML JA JAVASCRIPT KENTÄT https://www.w3schools.com/django/django_ref_field_lookups.php -->

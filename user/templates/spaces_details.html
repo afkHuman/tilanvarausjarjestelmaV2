@@ -5,68 +5,76 @@
 {% endblock %}
 
 {% block content %}
+  <!-- Kortti alkaa tästä -->
   <div class="mycard">
     
     <!-- Tilan tyyppi ja sijainti -->
-    <h1>
-      {% if myspaces.type == "office" %}
-        Toimisto
-      {% elif myspaces.type == "meeting_room" %}
-        Kokoushuone
-      {% elif myspaces.type == "conference_room" %}
-        Konferenssihuone
-      {% elif myspaces.type == "event_space" %}
-        Tapahtumatila
-      {% else %}
-        Ei määritelty
-      {% endif %}
-      {{ myspaces.location }}
-    </h1>
+    <!-- Kortin header -->
+    <div class="mycard-header">
+      <h1>
+        {% if myspaces.type == "office" %}
+          Toimisto
+        {% elif myspaces.type == "meeting_room" %}
+          Kokoushuone
+        {% elif myspaces.type == "conference_room" %}
+          Konferenssihuone
+        {% elif myspaces.type == "event_space" %}
+          Tapahtumatila
+        {% else %}
+          Ei määritelty
+        {% endif %}
+        {{ myspaces.location }}
+      </h1>
+    </div>
 
-    <p>ID: {{ myspaces.idNumber }}</p>
-    <p>Tilan sijainti: {{ myspaces.location }}</p>
-   
-    <!-- Tilan tyyppi -->
-    <p>Tilan tyyppi: 
-      {% if myspaces.type == "office" %}
-        Toimisto
-      {% elif myspaces.type == "meeting_room" %}
-        Kokoushuone
-      {% elif myspaces.type == "conference_room" %}
-        Konferenssihuone
-      {% elif myspaces.type == "event_space" %}
-        Tapahtumatila
-      {% else %}
-        Ei määritelty
-      {% endif %}
-    </p>
+    <!-- Kortin sisältö -->
+    <div class="mycard-body">
+      <p>ID: {{ myspaces.idNumber }}</p>
+      <p>Tilan sijainti: {{ myspaces.location }}</p>
+      
+      <!-- Tilan tyyppi -->
+      <p>Tilan tyyppi: 
+        {% if myspaces.type == "office" %}
+          Toimisto
+        {% elif myspaces.type == "meeting_room" %}
+          Kokoushuone
+        {% elif myspaces.type == "conference_room" %}
+          Konferenssihuone
+        {% elif myspaces.type == "event_space" %}
+          Tapahtumatila
+        {% else %}
+          Ei määritelty
+        {% endif %}
+      </p>
 
-    <!-- Palvelutyyppi -->
-    <p>
-      Palvelutyyppi: 
-      {% if myspaces.service_type == "rental" %}
-        Vuokra
-      {% elif myspaces.service_type == "loan" %}
-        Laina
-      {% else %}
-        Ei määritelty
-      {% endif %}
-    </p>
+      <!-- Palvelutyyppi -->
+      <p>
+        Palvelutyyppi: 
+        {% if myspaces.service_type == "rental" %}
+          Vuokra
+        {% elif myspaces.service_type == "loan" %}
+          Laina
+        {% else %}
+          Ei määritelty
+        {% endif %}
+      </p>
 
+      <!-- Julkisuus -->
+      <p>
+        Tilan julkisuus: 
+        {% if myspaces.publicity == "private" %}
+          Yksityinen
+        {% elif myspaces.publicity == "public" %}
+          Julkinen
+        {% else %}
+          Ei määritelty
+        {% endif %}
+      </p>
 
-    <!-- Julkisuus -->
-    <p>
-      Tilan julkisuus: 
-      {% if myspaces.publicity == "private" %}
-        Yksityinen
-      {% elif myspaces.publicity == "public" %}
-        Julkinen
-      {% else %}
-        Ei määritelty
-      {% endif %}
-    </p>
+      <p>Tilan koko: {{ myspaces.size }}m²</p>
+      <p>Tilan kapasiteetti: {{ myspaces.capacity }} henkilöä</p>
 
-    <p>Tilan koko: {{ myspaces.size }}m²</p>
-    <p>Tilan kapasiteetti: {{ myspaces.capacity }} henkilöä</p>
+      <!-- Kortti loppuu tähän -->
+    </div>
   </div>
 {% endblock %}

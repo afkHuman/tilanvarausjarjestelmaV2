@@ -1,14 +1,25 @@
 {% extends "master.html" %}
 
-
 {% block title %}
   Details about {{ mymember.firstname }} {{ mymember.lastname }}
 {% endblock %}
 
 {% block content %}
+
+ <!-- Kortti alkaa tästä -->
   <div class="mycard">
-    <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
-    <p>Puhelin {{ mymember.phone }}</p>
-    <p>Liittynyt jäseneksi: {{ mymember.joined_date }}</p>
+
+    <!-- Kortin header -->
+    <div class="mycard-header">
+      <h1>{{ mymember.firstname }} {{ mymember.lastname }}</h1>
+    </div>
+
+    <!-- Kortin sisältö -->
+    <div class="mycard-body"> 
+      <p>Puhelin: {{ mymember.phone }}</p>
+      <p>Liittynyt jäseneksi: {{ mymember.joined_date }}</p>
+    </div>
+
+    <!-- Kortti loppuu tähän -->
   </div>
 {% endblock %}

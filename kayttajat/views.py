@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from .models import UusiKayttaja
+from .models import UusiKayttaja,UusiTila
 
 # Käytetty esimerkissä
 # from django.db.models import Q
